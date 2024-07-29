@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupSelectbox from "./SignupSelectbox";
 import { Step } from "../Signup";
+import useSignupStore from "../../../stores/useSignupStore";
 
-interface LanguageOption {
+export interface LanguageOption {
   value: string;
   label: string;
 }

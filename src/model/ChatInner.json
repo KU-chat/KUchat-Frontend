@@ -1,5 +1,5 @@
 {
-  "name": "John Doe",
+  "name": "KU chat팀",
   "recentMessages": [
     {
       "messageId": 1,
@@ -8,25 +8,25 @@
       "senderId": -1,
       "text": "이영선, 정연우 님이 입장했습니다.",
       "parentId": null,
-      "createdDate": "2024-07-11T17:45:46.194878"
+      "createdDate": "2024-07-23T17:45:46.194878"
     },
     {
       "messageId": 2,
       "chatroomId": 1,
       "messageType": "TALK",
       "senderId": 1,
-      "text": "하이하이방",
+      "text": "하이하이",
       "parentId": null,
-      "createdDate": "2024-07-12T15:39:25.523467"
+      "createdDate": "2024-07-23T00:12:25.523467"
     },
     {
       "messageId": 3,
       "chatroomId": 1,
       "messageType": "TALK",
       "senderId": 2,
-      "text": "안뇽ㄹㅇㄹㄴㅁㅇ란ㄹㅁㄴ알저는애호박입니다입니다입니당ㄴ빈당",
+      "text": "오늘 어디서 만날까?",
       "parentId": null,
-      "createdDate": "2024-07-12T15:40:01.572346"
+      "createdDate": "2024-07-23T00:13:01.572346"
     }
   ],
   "memberInfos": [

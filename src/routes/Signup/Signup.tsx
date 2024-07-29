@@ -98,7 +98,7 @@ const Signup = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.backBtn} style={{ margin: "20px 0 20px 0" }}>
+      <div className={styles.backBtn}>
         {backBtnEnabled(step) && (
           <img
             src={left_arrow}
