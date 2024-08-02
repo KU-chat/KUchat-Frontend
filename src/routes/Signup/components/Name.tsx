@@ -32,7 +32,22 @@ const Name: React.FC<NameProps> = ({ onConfirm }) => {
       <div style={{ fontSize: "14px", marginTop: "10px" }}>
         20자이하로 입력해주세요.
       </div>
-      <button onClick={handleConfirm} disabled={isNameValid}></button>
+      <button
+        style={{
+          backgroundColor: " #046b40",
+          width: "80vw",
+          height: "6vh",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "6px",
+          color: "#fff",
+          border: "non",
+          fontFamily: "Pretendard",
+          fontSize: "14px",
+        }}
+        onClick={handleConfirm}
+        disabled={isNameValid}
+      ></button>
     </div>
   );
 };

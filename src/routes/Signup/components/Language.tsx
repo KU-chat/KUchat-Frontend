@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupSelectbox from "./SignupSelectbox";
+import SignupConfirmButton from "./SignupConfirmBotton";
 
 export interface LanguageOption {
   value: string;
@@ -78,7 +79,14 @@ const Language: React.FC<LanguageProps> = ({ onConfirm }) => {
         onChange={handleStudyLanguageSecondChange}
       />
 
-      <button onClick={handleConfirm}></button>
+      <SignupConfirmButton
+        onClick={handleConfirm}
+        isEnabled={
+          appLanguage !== null &&
+          studyLanguageFirst !== null &&
+          studyLanguageSecond !== null
+        }
+      />
     </div>
   );
 };
