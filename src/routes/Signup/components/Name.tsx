@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupInputbox from "./SignupInputbox";
-import { Step } from "../Signup";
 
 interface NameProps {
-  setStepValidity: (step: Step, isValid: boolean) => void;
+  onConfirm: (Name: string) => void;
 }
 
-const Name: React.FC<NameProps> = ({ setStepValidity }) => {
+const Name: React.FC<NameProps> = ({ onConfirm }) => {
   const [Name, setName] = useState<string>("");
-
+  const [isNameValid, setIsNameValid] = useState<boolean>(false);
   const hanldeNameChange = (e: string | undefined) => {
     if (e !== undefined && e.length <= 20) {
       setName(e);
@@ -17,9 +16,13 @@ const Name: React.FC<NameProps> = ({ setStepValidity }) => {
   };
 
   useEffect(() => {
-    const isValid = Name !== "" && Name.length <= 20;
-    setStepValidity("Name", isValid);
+    const isNameValid = Name !== "" && Name.length <= 20;
+    setIsNameValid(isNameValid);
   }, [Name]);
+
+  const handleConfirm = () => {
+    onConfirm(Name);
+  };
 
   return (
     <div style={{ marginLeft: "30px" }}>
@@ -29,6 +32,7 @@ const Name: React.FC<NameProps> = ({ setStepValidity }) => {
       <div style={{ fontSize: "14px", marginTop: "10px" }}>
         20자이하로 입력해주세요.
       </div>
+      <button onClick={handleConfirm} disabled={isNameValid}></button>
     </div>
   );
 };

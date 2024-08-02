@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupSelectbox from "./SignupSelectbox";
-import { Step } from "../Signup";
 
-interface NationOption {
+export interface NationOption {
   value: string;
   label: string;
 }
 
 interface NationProps {
-  setStepValidity: (step: Step, isValid: boolean) => void;
+  onConfirm: (selectedNation: NationOption) => void;
 }
 
 const Nations: NationOption[] = [
@@ -24,19 +23,19 @@ const Nations: NationOption[] = [
   { value: "기타국가", label: "기타국가" },
 ];
 
-const Nation: React.FC<NationProps> = ({ setStepValidity }) => {
-  const [selectedNation, setSelectedNation] = useState<NationOption | null>(
-    null,
+const Nation: React.FC<NationProps> = ({ onConfirm }) => {
+  const [selectedNation, setSelectedNation] = useState<NationOption>(
+    Nations[0],
   );
 
   const handleNationChange = (option: NationOption | null) => {
+    if (option === null) return;
     setSelectedNation(option);
   };
 
-  useEffect(() => {
-    const isValid = selectedNation !== null;
-    setStepValidity("Nation", isValid);
-  }, [selectedNation]);
+  const handleConfirm = () => {
+    onConfirm(selectedNation);
+  };
 
   return (
     <div style={{ marginLeft: "30px" }}>
@@ -47,6 +46,8 @@ const Nation: React.FC<NationProps> = ({ setStepValidity }) => {
         value={selectedNation}
         onChange={handleNationChange}
       />
+
+      <button onClick={handleConfirm}></button>
     </div>
   );
 };

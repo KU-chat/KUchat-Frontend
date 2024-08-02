@@ -1,68 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupSelectbox from "./SignupSelectbox";
-import { Step } from "../Signup";
-import useSignupStore from "../../../stores/useSignupStore";
 
 export interface LanguageOption {
   value: string;
   label: string;
 }
 interface LanguageProps {
-  setStepValidity: (step: Step, isValid: boolean) => void;
+  onConfirm: (
+    appLanguage: LanguageOption,
+    studyLanguageFirst: LanguageOption,
+    studyLanguageSecond: LanguageOption,
+  ) => void;
 }
-const appLanguage: LanguageOption[] = [
+const appLanguageOptions: LanguageOption[] = [
   { value: "한국어", label: "한국어" },
   { value: "영어", label: "영어" },
   { value: "중국어", label: "중국어" },
   { value: "일본어", label: "일본어" },
 ];
 
-const studyLanguage: LanguageOption[] = [
+const studyLanguageOptions: LanguageOption[] = [
   { value: "한국어", label: "한국어" },
   { value: "영어", label: "영어" },
   { value: "중국어", label: "중국어" },
   { value: "일본어", label: "일본어" },
 ];
 
-const Language: React.FC<LanguageProps> = ({ setStepValidity }) => {
-  const [selectedAppLanguage, setSelectedAppLanguage] =
-    useState<LanguageOption | null>(null);
+const Language: React.FC<LanguageProps> = ({ onConfirm }) => {
+  const [appLanguage, setAppLanguage] = useState<LanguageOption>(
+    appLanguageOptions[0],
+  );
+  const [studyLanguageFirst, setStudyLanguageFirst] = useState<LanguageOption>(
+    studyLanguageOptions[1],
+  );
+  const [studyLanguageSecond, setStudyLanguageSecond] =
+    useState<LanguageOption>(studyLanguageOptions[2]);
 
   const handleAppLanguageChange = (option: LanguageOption | null) => {
-    setSelectedAppLanguage(option);
+    if (option === null) return;
+    setAppLanguage(option);
   };
-
-  const [selectedStudyLanguage1, setSelectedStudyLanguage1] =
-    useState<LanguageOption | null>(null);
-
-  const handleStudyLanguage1Change = (option: LanguageOption | null) => {
-    setSelectedStudyLanguage1(option);
+  const handleStudyLanguageFirstChange = (option: LanguageOption | null) => {
+    if (option === null) return;
+    setStudyLanguageFirst(option);
   };
-
-  const [selectedStudyLanguage2, setSelectedStudyLanguage2] =
-    useState<LanguageOption | null>(null);
-
-  const handleStudyLanguage2Change = (option: LanguageOption | null) => {
-    setSelectedStudyLanguage2(option);
+  const handleStudyLanguageSecondChange = (option: LanguageOption | null) => {
+    if (option === null) return;
+    setStudyLanguageSecond(option);
   };
-
-  useEffect(() => {
-    const isValid =
-      selectedAppLanguage !== null &&
-      selectedStudyLanguage1 !== null &&
-      selectedStudyLanguage2 !== null;
-    setStepValidity("Language", isValid);
-  }, [selectedAppLanguage, selectedStudyLanguage1, selectedStudyLanguage2]);
-
+  const handleConfirm = () => {
+    onConfirm(appLanguage, studyLanguageFirst, studyLanguageSecond);
+  };
   return (
     <div style={{ marginLeft: "30px" }}>
       <SignupTitle Title="언어를 선택해주세요" />
 
       <SignupSelectbox
         title="어플 설정언어"
-        options={appLanguage}
-        value={selectedAppLanguage}
+        options={appLanguageOptions}
+        value={appLanguage}
         onChange={handleAppLanguageChange}
       />
 
@@ -70,16 +67,18 @@ const Language: React.FC<LanguageProps> = ({ setStepValidity }) => {
 
       <SignupSelectbox
         title="희망 학습언어"
-        options={studyLanguage}
-        value={selectedStudyLanguage1}
-        onChange={handleStudyLanguage1Change}
+        options={studyLanguageOptions}
+        value={studyLanguageFirst}
+        onChange={handleStudyLanguageFirstChange}
       />
 
       <SignupSelectbox
-        options={studyLanguage}
-        value={selectedStudyLanguage2}
-        onChange={handleStudyLanguage2Change}
+        options={studyLanguageOptions}
+        value={studyLanguageSecond}
+        onChange={handleStudyLanguageSecondChange}
       />
+
+      <button onClick={handleConfirm}></button>
     </div>
   );
 };

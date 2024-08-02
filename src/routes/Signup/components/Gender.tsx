@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SignupTitle from "./SignupTitle";
-import { Step } from "../Signup";
 interface GenderProps {
-  setStepValidity: (step: Step, isValid: boolean) => void;
+  onConfirm: (selectedGender: string) => void;
 }
 
-const Gender: React.FC<GenderProps> = ({ setStepValidity }) => {
-  const [selectedGender, setSelectedGender] = useState<string | undefined>(
-    undefined,
-  );
+const Gender: React.FC<GenderProps> = ({ onConfirm }) => {
+  const [selectedGender, setSelectedGender] = useState<string>("");
 
   const handleGenderSelect = (gender: string) => {
     setSelectedGender(gender);
   };
 
-  useEffect(() => {
-    const isValid = selectedGender !== undefined;
-    setStepValidity("Gender", isValid);
-  }, [selectedGender]);
-
+  const handleConfirm = () => {
+    onConfirm(selectedGender);
+  };
   return (
     <div style={{ marginLeft: "30px" }}>
       <SignupTitle Title="성별을 알려주세요"></SignupTitle>
@@ -62,6 +57,11 @@ const Gender: React.FC<GenderProps> = ({ setStepValidity }) => {
         >
           여자
         </button>
+
+        <button
+          onClick={handleConfirm}
+          disabled={selectedGender === undefined}
+        ></button>
       </div>
     </div>
   );

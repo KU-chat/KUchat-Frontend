@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupInputbox from "./SignupInputbox";
-import { Step } from "../Signup";
 
 interface StudentInfoProps {
-  setStepValidity: (step: Step, isValid: boolean) => void;
+  onConfirm: (major: string, studentId: string) => void;
 }
 
-const StudentInfo: React.FC<StudentInfoProps> = ({ setStepValidity }) => {
+const StudentInfo: React.FC<StudentInfoProps> = ({ onConfirm }) => {
   const [major, setMajor] = useState<string>("");
   const [studentId, setStudentId] = useState<string>("");
+  const [isValid, setIsValid] = useState<boolean>(false);
 
   const handleMajorChange = (e: string | undefined) => {
     if (e !== undefined && e.length <= 20) {
@@ -22,15 +22,15 @@ const StudentInfo: React.FC<StudentInfoProps> = ({ setStepValidity }) => {
       setStudentId(e);
     }
   };
-  useEffect(() => {
-    const isValid =
-      major !== "" &&
-      major.length <= 20 &&
-      major.length >= 4 &&
-      studentId !== "" &&
-      studentId.length == 9;
 
-    setStepValidity("StudentInfo", isValid);
+  const handleConfirm = () => {
+    onConfirm(major, studentId);
+  };
+
+  useEffect(() => {
+    const isMajorValid = major.length >= 4 && major.length <= 20;
+    const isStudentIdValid = studentId.length === 9;
+    setIsValid(isMajorValid && isStudentIdValid);
   }, [major, studentId]);
 
   return (
@@ -50,6 +50,8 @@ const StudentInfo: React.FC<StudentInfoProps> = ({ setStepValidity }) => {
         placeholder={"ex) 200012345"}
         maxLength={9}
       />
+
+      <button onClick={handleConfirm} disabled={!isValid}></button>
     </div>
   );
 };

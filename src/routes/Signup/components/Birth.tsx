@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupInputbox from "./SignupInputbox";
-import { Step } from "../Signup";
 
 interface BirthProps {
-  setStepValidity: (step: Step, isValid: boolean) => void;
+  onConfirm: (Birth: string) => void;
 }
 
-const Name: React.FC<BirthProps> = ({ setStepValidity }) => {
+const Name: React.FC<BirthProps> = ({ onConfirm }) => {
   const [Birth, setBirth] = useState<string>("");
+  const [isBirthValid, setIsBirthValid] = useState<boolean>(false);
 
   const hanldeBirthChange = (e: string | undefined) => {
     if (e !== undefined && e.length <= 20) {
@@ -17,9 +17,13 @@ const Name: React.FC<BirthProps> = ({ setStepValidity }) => {
   };
 
   useEffect(() => {
-    const isValid = Birth !== "" && Birth.length == 6;
-    setStepValidity("Birth", isValid);
+    const isBirthValid = Birth !== "" && Birth.length == 6;
+    setIsBirthValid(isBirthValid);
   }, [Birth]);
+
+  const handleConfirm = () => {
+    onConfirm(Birth);
+  };
 
   return (
     <div style={{ marginLeft: "30px" }}>
@@ -31,6 +35,7 @@ const Name: React.FC<BirthProps> = ({ setStepValidity }) => {
         placeholder="ex) YYMMDD"
         maxLength={6}
       ></SignupInputbox>
+      <button onClick={handleConfirm} disabled={isBirthValid}></button>
     </div>
   );
 };
