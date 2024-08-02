@@ -39,6 +39,7 @@ const Name: React.FC<BirthProps> = ({ onConfirm }) => {
       <SignupConfirmButton
         onClick={handleConfirm}
         isEnabled={isBirthValid}
+        text="확인"
       ></SignupConfirmButton>
     </div>
   );

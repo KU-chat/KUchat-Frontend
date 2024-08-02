@@ -55,6 +55,7 @@ const StudentInfo: React.FC<StudentInfoProps> = ({ onConfirm }) => {
       <SignupConfirmButton
         onClick={handleConfirm}
         isEnabled={isValid}
+        text="확인"
       ></SignupConfirmButton>
     </div>
   );

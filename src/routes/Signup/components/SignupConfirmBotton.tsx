@@ -1,13 +1,15 @@
 import React from "react";
 
 interface SignupConfirmButtonProps {
-  onClick: () => void;
-  isEnabled: boolean;
+  onClick?: () => void;
+  isEnabled?: boolean;
+  text: string;
 }
 
 const SignupConfirmButton: React.FC<SignupConfirmButtonProps> = ({
   onClick,
   isEnabled,
+  text,
 }) => {
   return (
     <div style={{ display: "flex" }}>
@@ -30,7 +32,7 @@ const SignupConfirmButton: React.FC<SignupConfirmButtonProps> = ({
         onClick={onClick}
         disabled={!isEnabled}
       >
-        확인
+        {text}
       </button>
     </div>
   );

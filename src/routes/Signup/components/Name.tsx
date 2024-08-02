@@ -36,6 +36,7 @@ const Name: React.FC<NameProps> = ({ onConfirm }) => {
       <SignupConfirmButton
         onClick={handleConfirm}
         isEnabled={isNameValid}
+        text="확인"
       ></SignupConfirmButton>
     </div>
   );

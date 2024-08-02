@@ -86,6 +86,7 @@ const Language: React.FC<LanguageProps> = ({ onConfirm }) => {
           studyLanguageFirst !== null &&
           studyLanguageSecond !== null
         }
+        text="확인"
       />
     </div>
   );

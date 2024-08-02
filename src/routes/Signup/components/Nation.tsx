@@ -51,6 +51,7 @@ const Nation: React.FC<NationProps> = ({ onConfirm }) => {
       <SignupConfirmButton
         onClick={handleConfirm}
         isEnabled={selectedNation !== null}
+        text="확인"
       ></SignupConfirmButton>
     </div>
   );

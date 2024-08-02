@@ -1,6 +1,7 @@
 import React from "react";
 import lottieComplete from "../../../assets/lottie/complete.json";
 import Lottie from "lottie-react";
+import SignupConfirmButton from "./SignupConfirmBotton";
 
 const SignupComplete = () => {
   return (
@@ -30,6 +31,13 @@ const SignupComplete = () => {
         >
           회원가입을 완료했어요!
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <SignupConfirmButton text="KU chat 시작하기"></SignupConfirmButton>
       </div>
     </div>
   );

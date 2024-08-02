@@ -58,12 +58,12 @@ const Gender: React.FC<GenderProps> = ({ onConfirm }) => {
         >
           여자
         </button>
-
-        <SignupConfirmButton
-          onClick={handleConfirm}
-          isEnabled={selectedGender !== null}
-        ></SignupConfirmButton>
       </div>
+      <SignupConfirmButton
+        onClick={handleConfirm}
+        isEnabled={selectedGender !== ""}
+        text="확인"
+      ></SignupConfirmButton>
     </div>
   );
 };

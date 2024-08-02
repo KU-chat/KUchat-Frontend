@@ -43,19 +43,22 @@ const Signup = () => {
 
   const handleNameConfirm = (name: string) => {
     useSignupStore.setState({ name: name });
-    setStep("Name");
+    setStep("StudentInfo");
   };
 
   const handleStudentInfoConfirm = (studentInfo: string) => {
     useSignupStore.setState({ studentInfo: studentInfo });
+    setStep("Gender");
   };
 
   const handleGenderConfirm = (gender: string) => {
     useSignupStore.setState({ gender: gender });
+    setStep("Birth");
   };
 
   const handleBirthConfirm = (birth: string) => {
     useSignupStore.setState({ birth: birth });
+    setStep("SignupComplete");
   };
 
   const steps: Record<Step, JSX.Element> = {
