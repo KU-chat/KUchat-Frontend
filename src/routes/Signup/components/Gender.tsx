@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SignupTitle from "./SignupTitle";
+import SignupConfirmButton from "./SignupConfirmBotton";
 interface GenderProps {
   onConfirm: (selectedGender: string) => void;
 }
@@ -58,10 +59,10 @@ const Gender: React.FC<GenderProps> = ({ onConfirm }) => {
           여자
         </button>
 
-        <button
+        <SignupConfirmButton
           onClick={handleConfirm}
-          disabled={selectedGender === undefined}
-        ></button>
+          isEnabled={selectedGender !== null}
+        ></SignupConfirmButton>
       </div>
     </div>
   );

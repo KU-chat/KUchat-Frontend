@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupInputbox from "./SignupInputbox";
+import SignupConfirmButton from "./SignupConfirmBotton";
 
 interface NameProps {
   onConfirm: (Name: string) => void;
@@ -32,22 +33,10 @@ const Name: React.FC<NameProps> = ({ onConfirm }) => {
       <div style={{ fontSize: "14px", marginTop: "10px" }}>
         20자이하로 입력해주세요.
       </div>
-      <button
-        style={{
-          backgroundColor: " #046b40",
-          width: "80vw",
-          height: "6vh",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: "6px",
-          color: "#fff",
-          border: "non",
-          fontFamily: "Pretendard",
-          fontSize: "14px",
-        }}
+      <SignupConfirmButton
         onClick={handleConfirm}
-        disabled={isNameValid}
-      ></button>
+        isEnabled={isNameValid}
+      ></SignupConfirmButton>
     </div>
   );
 };

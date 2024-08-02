@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupInputbox from "./SignupInputbox";
+import SignupConfirmButton from "./SignupConfirmBotton";
 
 interface StudentInfoProps {
   onConfirm: (major: string, studentId: string) => void;
@@ -51,7 +52,10 @@ const StudentInfo: React.FC<StudentInfoProps> = ({ onConfirm }) => {
         maxLength={9}
       />
 
-      <button onClick={handleConfirm} disabled={!isValid}></button>
+      <SignupConfirmButton
+        onClick={handleConfirm}
+        isEnabled={isValid}
+      ></SignupConfirmButton>
     </div>
   );
 };

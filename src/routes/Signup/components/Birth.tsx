@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupInputbox from "./SignupInputbox";
+import SignupConfirmButton from "./SignupConfirmBotton";
 
 interface BirthProps {
   onConfirm: (Birth: string) => void;
@@ -35,7 +36,10 @@ const Name: React.FC<BirthProps> = ({ onConfirm }) => {
         placeholder="ex) YYMMDD"
         maxLength={6}
       ></SignupInputbox>
-      <button onClick={handleConfirm} disabled={isBirthValid}></button>
+      <SignupConfirmButton
+        onClick={handleConfirm}
+        isEnabled={isBirthValid}
+      ></SignupConfirmButton>
     </div>
   );
 };

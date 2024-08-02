@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignupTitle from "./SignupTitle";
 import SignupSelectbox from "./SignupSelectbox";
+import SignupConfirmButton from "./SignupConfirmBotton";
 
 export interface NationOption {
   value: string;
@@ -47,7 +48,10 @@ const Nation: React.FC<NationProps> = ({ onConfirm }) => {
         onChange={handleNationChange}
       />
 
-      <button onClick={handleConfirm}></button>
+      <SignupConfirmButton
+        onClick={handleConfirm}
+        isEnabled={selectedNation !== null}
+      ></SignupConfirmButton>
     </div>
   );
 };

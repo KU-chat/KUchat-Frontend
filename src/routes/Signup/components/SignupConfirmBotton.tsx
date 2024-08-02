@@ -10,25 +10,29 @@ const SignupConfirmButton: React.FC<SignupConfirmButtonProps> = ({
   isEnabled,
 }) => {
   return (
-    <button
-      style={{
-        backgroundColor: isEnabled ? "#046b40" : "#c6c6c6",
-        width: "84vw",
-        height: "6vh",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: "6px",
-        color: "#fff",
-        border: "none",
-        fontFamily: "Pretendard",
-        fontSize: "14px",
-        cursor: isEnabled ? "pointer" : "not-allowed",
-      }}
-      onClick={onClick}
-      disabled={!isEnabled}
-    >
-      확인
-    </button>
+    <div style={{ display: "flex" }}>
+      <button
+        style={{
+          backgroundColor: isEnabled ? "#046b40" : "#c6c6c6",
+          width: "84vw",
+          height: "6vh",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "6px",
+          color: "#fff",
+          border: "none",
+          fontFamily: "Pretendard",
+          fontSize: "14px",
+          cursor: isEnabled ? "pointer" : "not-allowed",
+          bottom: "4vh",
+          position: "absolute",
+        }}
+        onClick={onClick}
+        disabled={!isEnabled}
+      >
+        확인
+      </button>
+    </div>
   );
 };
 
